@@ -1,29 +1,30 @@
 package com.springboot.firstProjectSpringBoot.controller;
 
 import com.springboot.firstProjectSpringBoot.entity.JournalEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.springboot.firstProjectSpringBoot.services.JournalEntryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/journal")
-public class JournalEntryController {
+public class JournalEntryControllerV2 {
 
-//    private Map<Long, JournalEntity> journalEntityMap = new HashMap<>();
+    @Autowired
+     private JournalEntryService journalEntryService;
 
 //    @GetMapping
 //    public List<JournalEntity> getAll(){
 //        return new ArrayList<>(journalEntityMap.values());
 //    }
 //
-//    @PostMapping
-//    public boolean createEntry(@RequestBody JournalEntity myEntry){
-//        journalEntityMap.put(myEntry.getId(),myEntry);
-//        return true;
-//    }
+    @PostMapping
+    public boolean createEntry(@RequestBody JournalEntity myEntry){
+        journalEntryService.createEntry(myEntry);
+        return true;
+    }
 //
 //    @GetMapping("id/{myId}")
 //    public JournalEntity getJournalById(@PathVariable Long myId){
