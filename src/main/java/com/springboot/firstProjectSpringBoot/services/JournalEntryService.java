@@ -2,6 +2,7 @@ package com.springboot.firstProjectSpringBoot.services;
 
 import com.springboot.firstProjectSpringBoot.entity.JournalEntity;
 import com.springboot.firstProjectSpringBoot.repository.JournalEntryRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,10 +23,10 @@ public class JournalEntryService {
        return journalEntryRepository.findAll();
     }
 
-    public Optional<JournalEntity> getById(String id){
+    public Optional<JournalEntity> getById(ObjectId id){
         return journalEntryRepository.findById(id);
     }
-    public void deleteById(String id){
+    public void deleteById(ObjectId id){
          journalEntryRepository.deleteById(id);
     }
 
